@@ -321,25 +321,6 @@ CREATE TABLE indicadores(
     CONSTRAINT FK_indicador_programa FOREIGN KEY (id_programa_presupuestario) REFERENCES programas_presupuestarios(id_programa) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-DROP TABLE IF EXISTS reconducciones_atividades; 
-CREATE TABLE reconducciones_atividades(
-    id_reconduccion_actividades INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    no_oficio VARCHAR(15),
-    fecha DATETIME DEFAULT CURRENT_TIMESTAMP(),
-    dep_general VARCHAR(5),
-    dep_aux VARCHAR(20),
-    
-    programa_presup VARCHAR(255),   
-    objetivo_programa_presup VARCHAR(255),
-
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
-DROP TABLE IF EXISTS reconducciones_indicadores; 
-CREATE TABLE reconducciones_indicadores(
-    id_reconduccion_indicadores INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
 DROP TABLE IF EXISTS descripcion_programas; 
 CREATE TABLE descripcion_programas(
     id_descripcion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -367,3 +348,53 @@ CREATE TABLE comments(
     CONSTRAINT FK_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+
+DROP TABLE IF EXISTS reconducciones_atividades; 
+CREATE TABLE reconducciones_atividades(
+    id_reconduccion_actividades INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    no_oficio VARCHAR(15),
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP(),
+    dep_general VARCHAR(5),
+    dep_aux VARCHAR(20),
+    proyecto VARCHAR(12),
+    no_actividad VARCHAR(2),
+    desc_actividad VARCHAR(255),
+    u_medida VARCHAR(255),
+    meta_anual VARCHAR(255),
+    act_realizadas_sofar VARCHAR(255),
+    crea_incrementa VARCHAR(255),
+    cancela_reduce VARCHAR(255),
+    meta_modificada VARCHAR(255),
+    cal1 VARCHAR(255),
+    cal2 VARCHAR(255),
+    cal3 VARCHAR(255),
+    cal4 VARCHAR(255),
+    justificacion TEXT,
+    txt_creacion TEXT,
+    txt_cancelacion TEXT 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+DROP TABLE IF EXISTS reconducciones_indicadores; 
+CREATE TABLE reconducciones_indicadores(
+    id_reconduccion_indicadores INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    no_oficio VARCHAR(15),
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP(),
+    tipo_movimiento ENUM("Cancelación-Reconducción","Creación-Incremento"),
+    dep_general VARCHAR(10),
+    dep_aux VARCHAR(10),
+    programa_p VARCHAR(6),
+    objetivo TEXT,
+    proyecto VARCHAR(12),
+    proyecto_name VARCHAR(255),
+    niv_mir VARCHAR(10),
+    nombre_indicador TEXT,
+    variables_indicador TEXT,
+    unidad_medida VARCHAR(255),
+    tipos_operacion VARCHAR(255),
+    programacion_inicial VARCHAR(255),
+    avance VARCHAR(255),
+    programacion_modificada VARCHAR(255),
+    calendario_trimestral TEXT,
+    justificacion_impacto TEXT,
+    id_dependencia INT
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
