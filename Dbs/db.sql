@@ -328,6 +328,7 @@ CREATE TABLE reconducciones_atividades(
     fecha DATETIME DEFAULT CURRENT_TIMESTAMP(),
     dep_general VARCHAR(5),
     dep_aux VARCHAR(20),
+    
     programa_presup VARCHAR(255),   
     objetivo_programa_presup VARCHAR(255),
 
