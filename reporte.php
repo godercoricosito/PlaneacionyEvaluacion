@@ -1,3 +1,6 @@
+<?php
+require_once 'Controllers/ReporteController.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,21 +22,10 @@
 <div class="container-fluid mt-3">
 
     <div class="d-flex justify-content-center">
-
+        
         <nav aria-label="navigation">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Enero</a></li>
-                <li class="page-item"><a class="page-link" href="#">Febrero</a></li>
-                <li class="page-item"><a class="page-link" href="#">Marzo</a></li>
-                <li class="page-item active" aria-current="page"><span class="page-link">Abril</span></li>
-                <li class="page-item"><a class="page-link" href="#">Mayo</a></li>
-                <li class="page-item"><a class="page-link" href="#">Junio</a></li>
-                <li class="page-item"><a class="page-link" href="#">Julio</a></li>
-                <li class="page-item"><a class="page-link" href="#">Agosto</a></li>
-                <li class="page-item"><a class="page-link" href="#">Septiembre</a></li>
-                <li class="page-item"><a class="page-link" href="#">Octubre</a></li>
-                <li class="page-item"><a class="page-link" href="#">Noviembre</a></li>
-                <li class="page-item"><a class="page-link" href="#">Diciembre</a></li>
+                <?= Menu_mes($mes_actual, $mesareportar)?>  
             </ul>
         </nav>
     </div>    
