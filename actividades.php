@@ -1,56 +1,58 @@
+<?php
+session_start();
+if($_SESSION['id_permiso'] == 1){
+?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Actividades</title>
-    <link rel="stylesheet" href="sources/css/bootstrap.css">
-    <script type="text/javascript" src="sources/js/bootstrap.js"></script>
-    <script type="text/javascript" src="sources/js/menu.js"></script>
-    <link rel="stylesheet" href="sources/menu.scss">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
+<html lang="es">
+<?php include 'head.php';?>
+<?php include 'header.php';?>
 <body>
-<?php include_once 'sources/menu-left.php'?>
-
-<div class="container-fluid mt-3">
-
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="card text-center mr">
-				<div class="card-header bg-warning">
-					Pendiente
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">Direccion</h5>
-					<p class="card-text">Aqui va un pequeño resumen de las metas mensuales...</p>
-					<a href="reporte.php" class="btn btn-primary">Reportar</a>
-				</div>
-				<div class="card-footer text-muted">
-					Aqui va el nivel de urgencia para reportar
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-4">
-			<div class="card text-center mr">
-				<div class="card-header bg-warning">
-					Pendiente
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">Soporte Tecnico</h5>
-					<p class="card-text">Aqui va un pequeño resumen de las metas mensuales...</p>
-					<a href="reporte.php" class="btn btn-primary">Reportar</a>
-				</div>
-				<div class="card-footer text-muted">
-					Aqui va el nivel de urgencia para reportar
-				</div>
-			</div>
-		</div>
-	</div>
-
-
+<div class="container mx-auto">
+    <br>
+    <nav class="flex py-3 px-5 text-gray-700 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+                <a href="index.php" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                    <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                    Inicio
+                </a>
+            </li>
+            <li aria-current="page">
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2 dark:text-gray-500">Actividades</span>
+                </div>
+            </li>
+        </ol>
+    </nav>
+    <br>
+    <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-4 text-center">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dirección</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Metas mensuales.</p>
+            <a href="reportes.php" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Reportar
+            </a>
+        </div>
+        <div class="px-3 pt-4 pb-2 text-center">
+            <a href="#">
+                <span class="inline-block bg-red-600 text-white rounded-full px-3 py-1 text-sm font-semibold text-white-700 mr-2 mb-2">¡Importante!</span>
+            </a>
+        </div>
+    </div>
 </div>
-
+<?php include 'footer.php';?>
 </body>
 </html>
+<?php
+}else{
+    ?>
+    <script>
+        window.location.href = 'login.php';
+    </script>
+    <?php
+}
+?>

@@ -1,105 +1,122 @@
+<?php
+session_start();
+if($_SESSION['id_permiso'] == 1){
+?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Indicadores</title>
-    <link rel="stylesheet" href="sources/css/bootstrap.css">
-    <script type="text/javascript" src="sources/js/bootstrap.js"></script>
-    <script type="text/javascript" src="sources/js/menu.js"></script>
-    <link rel="stylesheet" href="sources/menu.scss">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
+<html lang="es">
+<?php include 'head.php';?>
+<?php include 'header.php';?>
 <body>
-
-    <?php include_once 'sources/menu-left.php'?>
-
-    <div class="container-fluid mt-3">
-    
-        <h6 class="mt-5">Nombre de la matriz</h6>
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">Nivel</th>
-                <th scope="col">Nombre Indiador</th>
-                <th scope="col">Unidad de Medida</th>
-                <th scope="col">Frecuencia</th>
-                <th scope="col">Anual</th>
-                <th scope="col">Trimestre</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">NF</th>
-                <td>Tasa de variacion en el numero de alumnos de educacion superior inscritos en programas de calidad</td>
-                <td>Reporte</td>
-                <td>Anual</td>
-                <td>34</td>
-                <td>8</td>
-                <td><button type="button" disabled class="btn btn-secondary">Reportar</button></td>
-                </tr>
-                <tr>
-                <th scope="row">NP</th>
-                <td>Tasa de variacion en el numero de otras cosas que son muy importantes como para ser evaluadas</td>
-                <td>Acta</td>
-                <td>Semestral</td>
-                <td>12</td>
-                <td>4</td>
-                <td><button type="button"  class="btn btn-primary">Reportar</button></td>
-                </tr>
-                <tr>
-                <th scope="row">NA 1.4</th>
-                <td>Porcentaje de cambios generados en el uno u otro porque no siempre pero a veces si</td>
-                <td>Chafaldrana</td>
-                <td>Trimestral</td>
-                <td>24</td>
-                <td>6</td>
-                <td><button type="button"  class="btn btn-primary">Reportar</button></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h6 class="mt-5">Nombre de otra matriz</h6>
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">Nivel</th>
-                <th scope="col">Nombre Indiador</th>
-                <th scope="col">Unidad de Medida</th>
-                <th scope="col">Frecuencia</th>
-                <th scope="col">Anual</th>
-                <th scope="col">Trimestre</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">NF</th>
-                <td>Nombre de otro indicador referente a programas de calidad</td>
-                <td>Reporte</td>
-                <td>Anual</td>
-                <td>34</td>
-                <td>8</td>
-                <td><button type="button" disabled class="btn btn-secondary">Reportar</button></td>
-                </tr>
-                <tr>
-                <th scope="row">NP</th>
-                <td>Tasa de variacion en el numero de otras cosas que son muy importantes como para ser evaluadas</td>
-                <td>Acta</td>
-                <td>Semestral</td>
-                <td>12</td>
-                <td>4</td>
-                <td><button type="button" class="btn btn-primary">Reportar</button></td>
-                </tr>
-                <tr>
-                <th scope="row">NA 1.4</th>
-                <td>Porcentaje de cambios generados en el uno u otro porque no siempre pero a veces si</td>
-                <td>Chafaldrana</td>
-                <td>Trimestral</td>
-                <td>24</td>
-                <td>6</td>
-                <td><button type="button" class="btn btn-primary">Reportar</button></td>
-                </tr>
-            </tbody>
-        </table>
+    <br>
+    <div class="container mx-auto">
+        <nav class="flex py-3 px-5 text-gray-700 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="index.php" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                        <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                        Inicio
+                    </a>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                        <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2 dark:text-gray-500">Indicadores</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+        <br>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-md">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-center text-gray-500 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Nivel
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Nombre Indiador
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Unidad de Medida
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Frecuencia
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Anual
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Trimestre
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Reportar</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                NF
+                            </th>
+                            <td class="px-6 py-4">
+                                Tasa de variacion en el numero de alumnos de educacion superior inscritos en programas de calidad.
+                            </td>
+                            <td class="px-6 py-4">
+                                Reporte
+                            </td>
+                            <td class="px-6 py-4">
+                                Anual
+                            </td>
+                            <td class="px-6 py-4">
+                                34
+                            </td>
+                            <td class="px-6 py-4">
+                                8
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">
+                                    Reportar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                NP
+                            </th>
+                            <td class="px-6 py-4">
+                                Tasa de variacion en el numero de otras cosas que son muy importantes como para ser evaluadas.
+                            </td>
+                            <td class="px-6 py-4">
+                                Acta
+                            </td>
+                            <td class="px-6 py-4">
+                                Semestral
+                            </td>
+                            <td class="px-6 py-4">
+                                12
+                            </td>
+                            <td class="px-6 py-4">
+                                4
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">
+                                    Reportar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
     </div>
+<?php include 'footer.php';?>    
 </body>
 </html>
+<?php
+} else{
+    ?>
+    <script>
+        window.location.href = 'login.php';
+    </script>
+    <?php
+}
+?>
