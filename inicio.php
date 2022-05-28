@@ -17,7 +17,7 @@
 date_default_timezone_set('America/Mexico_City');
 $meses = array("sobra", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 $mes = intval(date('m') - 1);
-// echo $_SERVER['REQUEST_URI'];?>
+echo $_SERVER['REQUEST_URI'];?>
 
     <div class="container justify-content-center">
         <br>
