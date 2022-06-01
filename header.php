@@ -1,9 +1,9 @@
 <?php
 // Aqui estan las variables de los Menus
 $actual = $_SERVER['REQUEST_URI'];
-$inicio = "/capataz/index.php";
-$actividades = "/capataz/actividades.php";
-$indicadores = "/capataz/indicadores.php";
+$inicio = "/simp/index.php";
+$actividades = "/simp/actividades.php";
+$indicadores = "/simp/indicadores.php";
 
 
 if($actual == $inicio){
@@ -13,12 +13,25 @@ if($actual == $inicio){
 }elseif($actual == $indicadores){
     $titulo_menu ="Indicadores";
 }
+
+function item_context($destino, $texto){
+    return '<li>
+    <a href="'.$destino.'" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">'.$texto.'</a>
+    </li>
+    ';
+}
+function item_principal($actual, $destino, $texto){
+    $destino2 = "/simp/".$destino;
+    $tipo = ($actual == $destino2) ? 'class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page"' : 'class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"' ;
+    return '<li><a href="'. $destino .'"'.$tipo.'>'.$texto.'</a></li>';
+}
+
 ?>
 <header>
     <nav class="bg-gray-100 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
         <div class="container flex flex-wrap justify-between items-center mx-auto">
             <a href="index.php" class="flex items-center">
-                <img src="../resources/img/logo-metepec.png" class="mr-6 h-6 sm:h-9" alt="Flowbite Logo" />
+                <img src="../resources/img/logo-metepec.png" class="mr-6 h-6 sm:h-9" alt="SIMONTS Metepec"/>
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false">
@@ -31,16 +44,9 @@ if($actual == $inicio){
                     <li>
                         <a href="" class="text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Gobierno Digital</a>
                     </li>
-                    <li>
-                        <a href="index.php" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="actividades.php" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Actividades</a>
-                    </li>
-                    <li>
-                        <a href="indicadores.php" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Indicadores</a>
-                    </li>
-                    <li>
+                    <?= item_principal($actual, "index.php", "Inicio")?>
+                    <?= item_principal($actual, "actividades.php", "Actividades")?>
+                    <?= item_principal($actual, "indicadores.php", "Indicadores")?>
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Más<svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
                         <!-- Dropdown menu -->
                         <div id="dropdownNavbar" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
@@ -48,22 +54,10 @@ if($actual == $inicio){
                             if($_SERVER['REQUEST_URI'] == $inicio){
                                 ?>
                                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                                    <li>
-                                        <a href="mi_perfil.php" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mi Perfil</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mandos Medios</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mandos Claves</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mis Áreas</a>
-                                    </li>
+                                    <?= item_context("mis_formatos.php", "Mis Formatos") ?>
+                                    <?= item_context("mi_perfil.php", "Mi Perfil") ?>
+                                    <?= item_context("mis_areas.php", "Mis Areas") ?>
                                 </ul>
-                                <div class="py-1">
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Mis Formatos</a>
-                                </div>
                                 <?php
                             }
                             ?>
@@ -71,46 +65,30 @@ if($actual == $inicio){
                             if($_SERVER['REQUEST_URI'] == $actividades){
                                 ?>
                                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Actividades por Área</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Registrar Actividades</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nueva Reducción de Actividades</a>
-                                    </li>
+                                    <?= item_context("actividades.php", "Actividades por Área") ?>
+                                    <?= item_context("nueva_actividad.php", "Registrar Actividades") ?>
+                                    <?= item_context("reconduccion_actividades.php", "Nueva Reducción de Actividades") ?>
+                                    <?= item_context("actividades_todas.php", "Todas las Actividades") ?>
                                 </ul>
-                                <div class="py-1">
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Todas las Actividades</a>
-                                </div>
-                                <?php
+                            <?php
                             }
                             ?>
                             <?php
                             if($_SERVER['REQUEST_URI'] == $indicadores){
                                 ?>
                                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Indicadores por Área</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mis Matrices</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nueva Reconducción de Indicadores</a>
-                                    </li>
+                                    <?= item_context("indiadores.php", "Indicadores por Área") ?>
+                                    <?= item_context("matrices.php", "Mis Matries") ?>
+                                    <?= item_context("reconduccion_indicadores.php", "Nueva Reconducción de Indicadores")?>
+                                    <?= item_context("indicadores_todos.php", "Todos los Indicadores")?>
                                 </ul>
-                                <div class="py-1">
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Todos los Indicadores</a>
-                                </div>
                                 <?php
                             }
                             ?>
                         </div>
                     </li>
                     <li>
-                        <svg class="w-6 h-6 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><a href="login.php"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></a></svg>
+                        <a href="login.php"><svg class="w-6 h-6 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg></a>
                     </li>
                 </ul>
             </div>

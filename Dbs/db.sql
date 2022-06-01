@@ -759,12 +759,14 @@ CREATE TABLE usuarios(
     id_usuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255),
     apellidos VARCHAR(255),
-    nivel INT NOT NULL,
-    email VARCHAR(255),
+    id_permiso INT NOT NULL,
+    correo_electronico VARCHAR(255),
     tel VARCHAR(255),
-    username VARCHAR(255),
-    password VARCHAR(255)
+    contrasena VARCHAR(255),
+    activo INT
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+INSERT INTO usuarios VALUES (NULL, 'German', 'Guillen', 1, 'goder@live.com', '7224531128', '123456', 1);
+
 
 DROP TABLE IF EXISTS actividades;
 CREATE TABLE actividades(

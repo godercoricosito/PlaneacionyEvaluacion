@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost","root","","planeacion_evaluacion");
+$mysqli = new mysqli("localhost","root","","planeacion_y_evaluacion");
 if(mysqli_connect_errno()){
     printf("Fallo la conexión: %s\n", mysqli_connect_error());
     exit();

@@ -22,7 +22,7 @@ if( isset( $_POST['g-recaptcha-response'] ) && $_POST['g-recaptcha-response'] !=
                 $_SESSION['activo'] = $datos['activo'];
                 $_SESSION['sistema'] = 'pbrm';
                 ?>
-                <script>window.location.href = 'index.php';</script>
+                <script>window.location.href = 'inicio.php';</script>
                 <?php
             } else{
                 ?>
