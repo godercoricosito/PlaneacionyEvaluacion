@@ -763,9 +763,11 @@ CREATE TABLE usuarios(
     correo_electronico VARCHAR(255),
     tel VARCHAR(255),
     contrasena VARCHAR(255),
-    activo INT
+    id_dependencia INT,
+    activo INT,
+    CONSTRAINT FK_dependencia FOREIGN KEY (id_dependencia) REFERENCES dependencias (id_dependencia) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-INSERT INTO usuarios VALUES (NULL, 'German', 'Guillen', 1, 'goder@live.com', '7224531128', '123456', 1);
+INSERT INTO usuarios VALUES (NULL, 'German', 'Guillen', 1, 'goder@live.com', '7224531128', '123456', 21, 1);
 
 
 DROP TABLE IF EXISTS actividades;
