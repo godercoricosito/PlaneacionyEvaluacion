@@ -29,5 +29,4 @@ function areas($con, $dep){
     return $all;
 }
 
-
 ?>
