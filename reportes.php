@@ -2,6 +2,8 @@
 session_start();
 require_once 'Controllers/ReporteController.php';
 if($_SESSION['id_permiso'] == 1){
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,7 +38,7 @@ if($_SESSION['id_permiso'] == 1){
         <div class="text-center">
             <nav aria-label="Page navigation example">
                 <ul class="inline-flex -space-x-px">
-                    <?=MenuMes($mes_actual)?>
+                    <?=MenuMes($el_mes, $id_area)?>
                 </ul>
             </nav>
         </div>           
@@ -61,68 +63,16 @@ if($_SESSION['id_permiso'] == 1){
                                 Avance Actual
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Programado Abril
+                                Programado <?= $meses[$el_mes]?>
                             </th>
                             <th scope="col" class="px-6 py-3">
-                            <span class="sr-only">Reportar</span>
+                            Reportar
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                1
-                            </th>
-                            <td class="px-6 py-4">
-                                Supervisar las actividades realizadas de la subdirección
-                            </td>
-                            <td class="px-6 py-4">
-                                Evento
-                            </td>
-                            <td class="px-6 py-4">
-                                23
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                                    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                5
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">
-                                    Reportar
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                2
-                            </th>
-                            <td class="px-6 py-4">
-                                Supervisar las actividades realizadas de la subdirección
-                            </td>
-                            <td class="px-6 py-4">
-                                Evento
-                            </td>
-                            <td class="px-6 py-4">
-                                23
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                                    <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                5
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">
-                                    Reportar
-                                </button>
-                            </td>
-                        </tr>
+                    <?= Actividades($con, $el_mes, $id_area, $meses)?>
+
                     </tbody>
             </table>
         </div>
