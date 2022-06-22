@@ -884,7 +884,7 @@ INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_
 INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_anual_anterior, alcanzado_anual_anterior, id_area, id_validacion, validado) VALUES ("1","Elaboracion y publicacion de las Gacetas Municipales.","Gacetas","0","0",32,1,1);
 INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_anual_anterior, alcanzado_anual_anterior, id_area, id_validacion, validado) VALUES ("1","Integracion de acuerdos para las sesones de cabildo","Expdiene","0","0",33,1,1);
 INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_anual_anterior, alcanzado_anual_anterior, id_area, id_validacion, validado) VALUES ("1","Inventario de bienes inmuebles del Ayuntamiento de Metepec","Inventario","2","2",34,1,1);
-INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_anual_anterior, alcanzado_anual_anterior, id_area, id_validacion, validado) VALUES ("1","Elaboración de Constancias de Identidad, Vecindad y ÿltima residencia.","Informe","0","0",35,1,1);
+INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_anual_anterior, alcanzado_anual_anterior, id_area, id_validacion, validado) VALUES ("1","Elaboración de Constancias de Identidad, Vecindad y ultima residencia.","Informe","0","0",35,1,1);
 INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_anual_anterior, alcanzado_anual_anterior, id_area, id_validacion, validado) VALUES ("2","Expedición  Cartillas del Servicio Militar Nacional","informe","0","0",35,1,1);
 INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_anual_anterior, alcanzado_anual_anterior, id_area, id_validacion, validado) VALUES ("1","Aplicación de incidencias determninadas","Registro","5","5",36,1,1);
 INSERT INTO actividades (codigo_actividad, nombre_actividad, unidad, programado_anual_anterior, alcanzado_anual_anterior, id_area, id_validacion, validado) VALUES ("2","Realización de movimientos de altas y bajas","Registro","4","4",36,1,1);
@@ -2495,20 +2495,40 @@ INSERT INTO programaciones VALUES (NULL, "1","1","1","1","1","1","1","1","1","1"
 DROP TABLE IF EXISTS avances;
 CREATE TABLE avances(
     id_avance INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    enero INT,
-    febrero INT,
-    marzo INT,
-    abril INT,
-    mayo INT,
-    junio INT,
-    julio INT,
-    agosto INT,
-    septiembre INT,
-    octubre INT,
-    noviembre INT,
-    diciembre INT,
+    mes VARCHAR(2),
+    avance VARCHAR(25),
+    justificacion TEXT,
+    path_evidenia VARCHAR(255),
+    path_evidenia_evidencia VARCHAR(255),
     id_actividad INT,
-    CONSTRAINT FK_avane_actividad FOREIGN KEY (id_avance) REFERENCES actividades (id_actividad) ON DELETE CASCADE
+    id_usuario_avance INT,
+    validado INT,
+    id_usuario_validador INT,
+    fecha_avance TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_validador TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT FK_avane_actividad FOREIGN KEY (id_actividad) REFERENCES actividades (id_actividad) ON DELETE CASCADE,
+    CONSTRAINT FK_user_captura FOREIGN KEY (id_usuario_avance) REFERENCES usuarios (id_usuario) ON DELETE CASCADE,
+    CONSTRAINT FK_user_valida FOREIGN KEY (id_usuario_validador) REFERENCES usuarios (id_usuario) ON DELETE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+DROP TABLE IF EXISTS avances_indicadores;
+CREATE TABLE avances_indicadores(
+    id_avance INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    trimestre VARCHAR(1),
+    avance VARCHAR(25),
+    justificacion TEXT,
+    path_evidenia VARCHAR(255),
+    path_evidenia_evidencia VARCHAR(255),
+    id_indicador INT,
+    id_usuario_avance INT,
+    validado INT,
+    id_usuario_validador INT,
+    fecha_avance TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_validador TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT FK_avane_actividad FOREIGN KEY (id_indicador) REFERENCES indicadores (id_indicador) ON DELETE CASCADE,
+    CONSTRAINT FK_user_captura FOREIGN KEY (id_usuario_avance) REFERENCES usuarios (id_usuario) ON DELETE CASCADE,
+    CONSTRAINT FK_user_valida FOREIGN KEY (id_usuario_validador) REFERENCES usuarias (id_usuario) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 

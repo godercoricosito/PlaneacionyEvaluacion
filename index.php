@@ -1,11 +1,11 @@
 <?php
+include 'head.php';
 session_start();
 if($_SESSION['id_permiso'] == 1){
 require_once 'Controllers/Inicio_Controlador.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<?php include 'head.php';?>
 <?php include 'header.php';?>
 <body>
     <div class="container text-center mx-auto">
