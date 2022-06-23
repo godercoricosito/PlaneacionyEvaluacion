@@ -2512,25 +2512,6 @@ CREATE TABLE avances(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
-DROP TABLE IF EXISTS avances_indicadores;
-CREATE TABLE avances_indicadores(
-    id_avance INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    trimestre VARCHAR(1),
-    avance VARCHAR(25),
-    justificacion TEXT,
-    path_evidenia VARCHAR(255),
-    path_evidenia_evidencia VARCHAR(255),
-    id_indicador INT,
-    id_usuario_avance INT,
-    validado INT,
-    id_usuario_validador INT,
-    fecha_avance TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fecha_validador TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT FK_avane_actividad FOREIGN KEY (id_indicador) REFERENCES indicadores (id_indicador) ON DELETE CASCADE,
-    CONSTRAINT FK_user_captura FOREIGN KEY (id_usuario_avance) REFERENCES usuarios (id_usuario) ON DELETE CASCADE,
-    CONSTRAINT FK_user_valida FOREIGN KEY (id_usuario_validador) REFERENCES usuarias (id_usuario) ON DELETE CASCADE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
 
 DROP TABLE IF EXISTS indicadores;
 CREATE TABLE indicadores(
@@ -2547,21 +2528,49 @@ CREATE TABLE indicadores(
     tipo VARCHAR(50),
     medios_verificacion VARCHAR(255),
     supuestos VARCHAR(255),
-    prog_a_1 INT,
-    prog_b_1 INT,
-    prog_c_1 INT,
-    prog_a_2 INT,
-    prog_b_2 INT,
-    prog_c_2 INT,
-    prog_a_3 INT,
-    prog_b_3 INT,
-    prog_c_3 INT,
-    prog_a_4 INT,
-    prog_b_4 INT,
-    prog_c_4 INT,
     id_programa_presupuestario INT,
     CONSTRAINT FK_indicador_programa FOREIGN KEY (id_programa_presupuestario) REFERENCES programas_presupuestarios(id_programa) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+DROP TABLE IF EXISTS indicadores_uso;
+CREATE TABLE indicadores_uso(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_dep_general INT,
+    id_dep_aux INT,
+    id_proyecto INT,
+    nombre_indicador TEXT,
+    variable_a VARCHAR(255),
+    variable_b VARCHAR(255),
+    variable_c VARCHAR(255),
+    interpretacion TEXT,
+    tipo VARCHAR(255),
+    formula_resultado VARCHAR(50),
+    periodicidad VARCHAR(20),
+    t1 VARCHAR(10),
+    t2 VARCHAR(10),
+    t3 VARCHAR(10),
+    t4 VARCHAR(10)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+DROP TABLE IF EXISTS avances_indicadores;
+CREATE TABLE avances_indicadores(
+    id_avance INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    trimestre VARCHAR(1),
+    avance VARCHAR(25),
+    porcentaje_avance VARCHAR(10),
+    justificacion TEXT,
+    path_evidenia VARCHAR(255),
+    path_evidenia_evidencia VARCHAR(255),
+    id_indicador INT,
+    id_usuario_avance INT,
+    validado INT,
+    id_usuario_validador INT,
+    fecha_avance TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_validador TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 
 DROP TABLE IF EXISTS descripcion_programas; 
 CREATE TABLE descripcion_programas(
