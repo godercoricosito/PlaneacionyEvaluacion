@@ -2545,7 +2545,7 @@ CREATE TABLE indicadores_uso(
     variable_c VARCHAR(255),
     interpretacion TEXT,
     tipo VARCHAR(255),
-    formula_resultado VARCHAR(50),
+    formula VARCHAR(50),
     periodicidad VARCHAR(20),
     t1 VARCHAR(10),
     t2 VARCHAR(10),
