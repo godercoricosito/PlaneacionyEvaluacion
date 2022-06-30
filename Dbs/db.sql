@@ -2546,12 +2546,11 @@ CREATE TABLE indicadores_uso(
     interpretacion TEXT,
     tipo VARCHAR(255),
     formula VARCHAR(50),
-    periodicidad VARCHAR(20), -- mensual, trimestral, semetral y anual
+    periodicidad VARCHAR(20),
     t1 VARCHAR(10),
     t2 VARCHAR(10),
     t3 VARCHAR(10),
-    t4 VARCHAR(10),
-    id_dependencia INT
+    t4 VARCHAR(10)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -2559,20 +2558,17 @@ DROP TABLE IF EXISTS avances_indicadores;
 CREATE TABLE avances_indicadores(
     id_avance INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     trimestre VARCHAR(1),
-    avance_a VARCHAR(25),
-    avance_b VARCHAR(25),
-    avance_c VARCHAR(25),
-    porentaje_avance VARCHAR(6),
+    avance VARCHAR(25),
+    porcentaje_avance VARCHAR(10),
     justificacion TEXT,
     path_evidenia VARCHAR(255),
     path_evidenia_evidencia VARCHAR(255),
     id_indicador INT,
-    id_usuario_reporta INT,
-    reportado INT,
+    id_usuario_avance INT,
     validado INT,
-    id_usuario_valida INT,
-    fecha_reporta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fecha_valida TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id_usuario_validador INT,
+    fecha_avance TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_validador TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
