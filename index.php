@@ -1,7 +1,7 @@
 <?php
-include 'head.php';
 session_start();
 if($_SESSION['id_permiso'] == 1){
+include 'head.php';
 require_once 'Controllers/Inicio_Controlador.php';
 ?>
 <!DOCTYPE html>
