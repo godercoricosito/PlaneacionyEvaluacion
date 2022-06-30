@@ -2546,7 +2546,7 @@ CREATE TABLE indicadores_uso(
     interpretacion TEXT,
     tipo VARCHAR(255),
     formula VARCHAR(50),
-    periodicidad VARCHAR(20),
+    periodicidad VARCHAR(20), -- mensual, trimestral, semetral y anual
     t1 VARCHAR(10),
     t2 VARCHAR(10),
     t3 VARCHAR(10),

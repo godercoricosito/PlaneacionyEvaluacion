@@ -1,13 +1,13 @@
 <?php
-session_start();
+include 'head.php';
+include 'header.php';
 require_once 'Controllers/Actividades_Controlador.php';
 areas($con, $dep);
 if($_SESSION['id_permiso'] == 1){
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<?php include 'head.php';?>
-<?php include 'header.php';?>
+
 <body>
 <div class="container mx-auto">
     <br>
