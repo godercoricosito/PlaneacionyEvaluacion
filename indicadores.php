@@ -34,7 +34,7 @@ if($_SESSION['id_permiso'] == 1){
                                 Nivel
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nombre Indiador
+                                Nombre Indicador
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Unidad de Medida
@@ -53,19 +53,26 @@ if($_SESSION['id_permiso'] == 1){
                             </th>
                         </tr>
                     </thead>
+                    <?php
+                    include 'conexion.php'; 
+                    $consulta = "SELECT * FROM indicadores";
+                    $resultado = $mysqli->query($consulta);
+                    if($resultado->num_rows > 0){
+                        foreach($resultado as $datos){
+                        ?>
                     <tbody>
                         <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                NF
+                                <?php echo $datos['nivel_indicador'];?>
                             </th>
                             <td class="px-6 py-4">
-                                Tasa de variacion en el numero de alumnos de educacion superior inscritos en programas de calidad.
+                                <?php echo $datos['nombre'];?>
                             </td>
                             <td class="px-6 py-4">
-                                Reporte
+                                <?php echo $datos['tipo'];?>
                             </td>
                             <td class="px-6 py-4">
-                                Anual
+                                <?php echo $datos['frecuencia'];?>
                             </td>
                             <td class="px-6 py-4">
                                 34
@@ -74,37 +81,18 @@ if($_SESSION['id_permiso'] == 1){
                                 8
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">
-                                    Reportar
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                                NP
-                            </th>
-                            <td class="px-6 py-4">
-                                Tasa de variacion en el numero de otras cosas que son muy importantes como para ser evaluadas.
-                            </td>
-                            <td class="px-6 py-4">
-                                Acta
-                            </td>
-                            <td class="px-6 py-4">
-                                Semestral
-                            </td>
-                            <td class="px-6 py-4">
-                                12
-                            </td>
-                            <td class="px-6 py-4">
-                                4
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">
-                                    Reportar
-                                </button>
+                            <a href="reportar_indicador.php?id=<?php echo $datos['id_indicador'];?>" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Reportar</a>
                             </td>
                         </tr>
                     </tbody>
+                        <?php
+                        }
+                    } else{
+                        ?>
+                        <td class="px-6 py-4 text-center">Sin Indicadores</td>
+                        <?php
+                    }
+                    ?>
             </table>
         </div>
     </div>
